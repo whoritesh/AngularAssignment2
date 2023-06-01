@@ -1,0 +1,45 @@
+
+<div class="container">
+  <h1>Angular Carousal</h1>
+  <div class="carousel">
+    <carousel>
+      <slide *ngFor="let slide of slides">
+        <img [src]="slide.imageUrl" alt="Slide">
+        <div class="carousel-caption">
+          <h3>{{ slide.caption }}</h3>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+
+
+  <div class="slide-list">
+    <h2>Slide List</h2>
+    <ul>
+      <li *ngFor="let slide of slides">
+        <img [src]="slide.imageUrl" alt="Slide" class="slide-thumbnail">
+        <span>{{ slide.caption }}</span>
+        <button (click)="deleteSlide(slide)" class="btn"><i class="fa fa-trash" style="font-size:36px;color:red"></i></button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="slide-form">
+    <h3>Add Slide</h3>
+    <form (submit)="addSlide()">
+      <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <input class="form-control" type="text" id="imageUrl" name="imageUrl" [(ngModel)]="newSlide.imageUrl" required>
+      </div>
+      <div class="form-group">
+        <label for="caption">Slide Caption:</label>
+        <input class="form-control" type="text" id="caption" name="caption" [(ngModel)]="newSlide.caption" required>
+      </div>
+      <button class="btn btn-primary" type="submit" style="height: 40px; width: 100px;">Add Slide</button>
+    </form>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
